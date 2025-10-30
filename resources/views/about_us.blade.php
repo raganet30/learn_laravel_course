@@ -11,9 +11,9 @@
             ID: {{ $id }}
         <h2>
 
-
-            @for ($i=0; $i<10; $i++)
-            <p> {{ $i }} </p>
-            @endfor
+            @include('sub_views.input',[
+            'myName'=> 'John Doe',
+            ])
+           
     </body>
 </html>

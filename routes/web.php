@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -60,3 +61,8 @@ Route::view ('contact_us/{name}/{id}', 'contact_us');
 Route:: fallback(function(){
     return '404 ERROR | PAGE NOT FOUND';
 });
+
+
+
+Route::get('students',[StudentController::class,'index']);
+Route::get('about-us',[StudentController::class,'aboutUs']);
