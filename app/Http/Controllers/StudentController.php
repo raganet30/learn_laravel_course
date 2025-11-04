@@ -31,12 +31,34 @@ class StudentController extends Controller
         return 'Added Successfully!'; 
     }
 
+
     public function getData()
     {
         $items = DB::table('students')
-        ->where('id',101)
+        ->select('id', 'name')
+        ->where('id',10)
         ->first();
 
         return $items;
+    }
+
+    //using query builder
+    public function updateData()
+    {
+        DB::table('students')->where('id',101)->update([
+            'name'=> 'kenneth',
+            'age' => '25',
+            'email' => ' neth3039@gmail.com'
+        ]);
+
+        return 'Updated Successfully!'; 
+
+    }
+
+    public function deleteData()
+    {
+        DB::table('students')->where('id',101)->delete();
+        
+        return 'Deleted Successfully'; 
     }
 }
