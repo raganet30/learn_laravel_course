@@ -1,19 +1,8 @@
-<html>
-    <body>
-        <h1>
-            ABOUT US
-        </h1>
-        <h2>
-            Name: {{ $name }}
-        <h2>
-        <h2>
-            {{-- Email:  {{ $email }} --}}
-            ID: {{ $id }}
-        <h2>
+@extends('layouts.app')
 
-            @include('sub_views.input',[
-            'myName'=> 'John Doe',
-            ])
-           
-    </body>
-</html>
+@section('title', 'Home Page')
+
+@section('content')
+    <h2>About Us page</h2>
+    <p>This content will replace the @yield('content') section in the layout.</p>
+@endsection
