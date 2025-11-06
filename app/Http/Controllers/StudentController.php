@@ -25,6 +25,11 @@ class StudentController extends Controller
         return view('students.index', compact('students'));    
     }
 
+
+    
+
+
+
     // public function aboutUs(){
     //     return "Code with Kenneth";
     // }

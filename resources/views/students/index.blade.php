@@ -6,10 +6,23 @@
     <h2 class="mb-4">Students Page</h2>
 
     {{-- Search Bar --}}
-    <form class="d-flex mb-3" role="search" method="GET" action="{{ URL('students') }}">
-        <input class="form-control me-2" type="search" name="search" id="search" placeholder="Search by name or email...">
-        <button class="btn btn-primary" type="submit">Search</button>
-    </form>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        {{-- Search Bar --}}
+        <form class="d-flex w-50" role="search" method="GET" action="{{ url('students') }}">
+            <input class="form-control me-2" type="search" name="search" id="search"
+                placeholder="Search by name or email...">
+            <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search me-1"></i>
+            </button>
+        </form>
+
+        {{-- Add Student Button --}}
+        <a href="{{ url('students/add') }}" class="btn btn-success shadow-sm px-3 py-2 rounded-pill">
+            <i class="bi bi-person-plus"></i> Add Student
+        </a>
+
+    </div>
+
 
     {{-- Students Table --}}
     <div class="table-responsive">
