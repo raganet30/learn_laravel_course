@@ -1,33 +1,20 @@
 @extends('layouts.app')
 
-@section('title', 'Add Student')
+@section('title', 'Edit Student')
 
 @section('content')
     <div class="container-fluid">
         <a href="{{ url('students') }}" class="btn btn-secondary shadow-sm px-3 py-2 ">
             <i class="bi bi-arrow-return-left"></i> Back
         </a>
-
-      
-        @if($errors->any())
-            <div class="alert alert-danger mt-3">
-                <ul class="mb-0">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-
-
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="card shadow-sm border-0 rounded-3">
                     <div class="card-header bg-primary text-white text-center">
-                        <h4 class="mb-0">Add Student</h4>
+                        <h4 class="mb-0">Edit Student</h4>
                     </div>
                     <div class="card-body p-4">
-                        <form action="{{ URL ('students/create') }}" method="POST">
+                        <form action="{{ URL ('students/update', $student->id) }}" method="POST">
                             @csrf
                             {{-- Name --}}
                             <div class="mb-3">
@@ -37,8 +24,7 @@
                                     class="form-control form-control-lg" 
                                     id="name"
                                     name="name" 
-                                    placeholder="Enter full name"
-                                    
+                                    value="{{ $student->name }}"
                                 >
                             </div>
 
@@ -50,8 +36,7 @@
                                     class="form-control form-control-lg" 
                                     id="email" 
                                     name="email"
-                                    placeholder="Enter email address"
-                                    
+                                   value = "{{ $student->email }}"
                                 >
                             </div>
 
@@ -63,8 +48,7 @@
                                     class="form-control form-control-lg" 
                                     id="age" 
                                     name="age"
-                                    placeholder="Enter age"
-                                    
+                                    value="{{ $student->age }}"
                                 >
                             </div>
 
@@ -76,7 +60,7 @@
                                     class="form-control form-control-lg" 
                                     name="date_of_birth"
                                     id="date_of_birth"
-                                    
+                                    value="{{ $student->date_of_birth }}"
                                 >
                             </div>
 
@@ -84,11 +68,11 @@
                             <div class="mb-4">
                                 <label class="form-label fw-semibold d-block">Gender</label>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="m">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="m" {{ $student->gender == 'm' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="male">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="female" value="f">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="f" {{ $student->gender == 'f' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="female">Female</label>
                                 </div>
                             </div>

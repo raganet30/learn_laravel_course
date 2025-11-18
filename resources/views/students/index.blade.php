@@ -50,8 +50,13 @@
                         <td>{{ $student->gender }}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-info text-white">View</a>
-                            <a href="#" class="btn btn-sm btn-warning text-white">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{ URL ('students/edit', $student->id) }}" class="btn btn-sm btn-warning text-white">Edit</a>
+                            
+                            <form action="{{ URL ('students/delete', $student->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this student?');">Delete</button>
+                            </form>
                         </td>
 
                     </tr>

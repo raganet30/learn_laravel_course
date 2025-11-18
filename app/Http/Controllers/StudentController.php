@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\StudentAddRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +27,52 @@ class StudentController extends Controller
     }
 
 
-    
+    public function create(StudentAddRequest $request)
+    {
 
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->age = $request->age;
+        $student->gender = $request->gender;
+        $student->date_of_birth = $request->date_of_birth;
+        $student->save();
+        
+        return redirect('students');
+    }
+
+
+    public function edit($id)
+    {
+        $student = Student::findOrFail($id);
+
+        return view ('students.edit', compact('student'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student = Student::findOrFail(($id));
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->age = $request->age;
+        $student->gender = $request->gender;
+        $student->date_of_birth = $request->date_of_birth;
+        $student->update();
+
+        return redirect ('students');
+
+    }
+
+
+
+    public function destroy(Request $request, $id)
+    {
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        return redirect ('students');
+    }
 
 
     // public function aboutUs(){
